@@ -1,3 +1,5 @@
+'use client';
+
 import SearchInput from '@/app/components/searchInput/component';
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button } from '@nextui-org/react';
 import Image from 'next/image';

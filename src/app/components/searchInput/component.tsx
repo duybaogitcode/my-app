@@ -1,3 +1,4 @@
+'use client';
 import { Input } from '@nextui-org/react';
 import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
