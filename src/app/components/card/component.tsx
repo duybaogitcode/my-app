@@ -1,4 +1,4 @@
-import React from 'react';
+import { Card, CardFooter, Image, Button } from '@nextui-org/react';
 
 export interface Item {
   title: string;
@@ -6,17 +6,33 @@ export interface Item {
   category: string[];
 }
 
-const Card = ({ item }: { item: Item }) => {
+const CardComponent = ({ item }: { item: Item }) => {
+  console.log(item.title);
+
   return (
-    <div>
-      <h1>{item.title}</h1>
-      <p>Number of episodes: {item.episodes}</p>
-      <p>Category: {item.category.join(' - ')}</p>
-    </div>
+    <Card radius='lg' className='border-none'>
+      <Image
+        alt='Woman listing to music'
+        src='https://images3.alphacoders.com/132/1322308.jpeg'
+        className='object-cover'
+      />
+      <CardFooter className='justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10'>
+        <p className='text-tiny text-white/80'>Sắp tới.</p>
+        <Button
+          className='text-tiny text-white bg-black/20'
+          variant='flat'
+          color='default'
+          radius='lg'
+          size='sm'
+        >
+          Nhắc tôi
+        </Button>
+      </CardFooter>
+    </Card>
   );
 };
 
-export default Card;
+export default CardComponent;
 
 // interface Item {
 //   title: string;

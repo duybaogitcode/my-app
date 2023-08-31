@@ -5,7 +5,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 
 export default function Footer() {
   return (
-    <div className='pb-5'>
+    <div className='py-10'>
       <div className='flex justify-center'>
         <div className='space-y-6'>
           <div className='flex justify-start space-x-5'>
@@ -15,7 +15,7 @@ export default function Footer() {
             <YouTubeIcon fontSize='large' />
           </div>
 
-          <div className='grid grid-cols-4 gap-4 max-lg:grid-cols-2 max-lg:gap-0'>
+          <div className='grid grid-cols-2 gap-0 sm:grid-cols-4 sm:gap-4'>
             <div className='text-gray-600 space-y-2'>
               <p>Mô tả âm thanh</p>
               <p>Quan hệ với nhà đầu tư</p>
