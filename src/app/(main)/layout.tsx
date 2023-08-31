@@ -1,10 +1,10 @@
 'use client';
-import './globals.css';
+import '../globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Providers } from './provider';
-import Navigation from './layouts/navigation/layout';
-import Footer from './layouts/footer/layout';
+import Navigation from '../layouts/navigation/layout';
+import Footer from '../layouts/footer/layout';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -14,14 +14,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en' className='dark'>
-      <body>
+    <html lang='en'>
+      <body className='dark text-foreground bg-background'>
         <header>
           <Providers>
             <Navigation />
           </Providers>
         </header>
-        <Providers>{children}</Providers>
+        <main>
+          <Providers>{children}</Providers>
+        </main>
         <footer>
           <Footer></Footer>
         </footer>
