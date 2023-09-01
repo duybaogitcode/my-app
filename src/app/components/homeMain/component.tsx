@@ -26,7 +26,7 @@ const HomeMain = () => {
           ></Image>
 
           {/* Gradient overlay */}
-          <div className='absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black opacity-50'></div>
+          <div className='absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black opacity-75'></div>
         </div>
         <div className='absolute left-36 top-1/2 space-y-4'>
           <h1 className='font-bold text-5xl'>Đây là tiêu đề</h1>
