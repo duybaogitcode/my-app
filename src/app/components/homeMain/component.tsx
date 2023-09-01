@@ -45,7 +45,7 @@ const HomeMain = () => {
         </div>
 
         {/* Nên dùng absolute vì để nó không chiếm diện tích của thẻ div */}
-        <div className='absolute top-3/4 space-y-3'>
+        <div className='absolute top-2/3 md:top-3/4 space-y-3'>
           <h1 className='ml-[1.5%] sm:text-2xl md:text-3xl'>Anime mới nhất mùa</h1>
           <div className='w-[98%] mx-auto grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4'>
             <CardComponent item={item}></CardComponent>

@@ -7,8 +7,6 @@ export interface Item {
 }
 
 const CardComponent = ({ item }: { item: Item }) => {
-  console.log(item.title);
-
   return (
     <Card radius='lg' className='border-none'>
       <Image
