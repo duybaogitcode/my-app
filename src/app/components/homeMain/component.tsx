@@ -16,7 +16,7 @@ const HomeMain = () => {
       {/* Nếu navbar không có className='fixed' shouldHideOnScroll thì lúc để relative sẽ chiếm diện tích 
         và navbar không thể tự làm mờ trên nền ảnh được, còn có thì thêm thoải mái */}
 
-      <div className='hidden h-screen sm:flex relative'>
+      <div className='h-screen flex relative'>
         {/* Nếu muốn ảnh chiếm diện tích, và đẩy thẻ div dưới xuống thì dùng h-screen để thẻ div chiếm diện tích,
         không thì thẻ div dưới sẽ bị đẩy lên vì không có chiều cao và độ rộng được định nghĩa, vì chỉ có ảnh là có thuộc tính fill mà thôi */}
         <div className='h-full'>
@@ -31,16 +31,16 @@ const HomeMain = () => {
           {/* Gradient overlay */}
           <div className='absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black opacity-75'></div>
         </div>
-        <div className='absolute left-36 top-1/2 space-y-4'>
-          <h1 className='font-bold text-5xl'>Đây là tiêu đề</h1>
-          <Button className='bg-white w-32 h-14 hover:bg-slate-300'>
+        <div className='absolute left-10 top-1/2 sm:left-36 space-y-4'>
+          <h1 className='font-bold text-3xl sm:text-5xl'>Đây là tiêu đề</h1>
+          <Button className='bg-white w-24 h-9 sm:bg-white sm:w-32 sm:h-14 hover:bg-slate-300'>
             {' '}
-            <PlayArrowIcon style={{ color: 'black' }} sx={{ fontSize: 50 }}></PlayArrowIcon>
+            <PlayArrowIcon className='text-black text-3xl'></PlayArrowIcon>
           </Button>
-          <Button className='bg-slate-400 w-44 h-14 hover:bg-slate-300 mx-2 '>
+          <Button className='bg-slate-400 h-9 w-24 sm:w-44 sm:h-14 hover:bg-slate-300 mx-2 '>
             {' '}
-            <InfoIcon sx={{ fontSize: 50 }}></InfoIcon>{' '}
-            <span className='font-bold'>Thông tin khác</span>
+            <InfoIcon className='text-3xl'></InfoIcon>{' '}
+            <span className='hidden sm:font-bold sm:flex'>Thông tin khác</span>
           </Button>
         </div>
 
