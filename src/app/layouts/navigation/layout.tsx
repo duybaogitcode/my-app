@@ -6,6 +6,8 @@ import Image from 'next/image';
 export default function Navigation() {
   return (
     // Để shouldHideOnScroll hoạt đồng thì cần thêm fixed cái navbar lại
+    //   Nếu navbar không có className='fixed' shouldHideOnScroll thì lúc để relative sẽ chiếm diện tích
+    // và navbar không thể tự làm mờ trên nền ảnh được, còn có thì thêm thoải mái
     <Navbar className='fixed' shouldHideOnScroll>
       <NavbarBrand>
         <p className='font-bold text-inherit'>AnimeWorld</p>

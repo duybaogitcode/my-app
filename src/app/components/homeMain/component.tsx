@@ -13,7 +13,10 @@ const HomeMain = () => {
 
   return (
     <div>
-      <div className='hidden h-screen sm:flex '>
+      {/* Nếu navbar không có className='fixed' shouldHideOnScroll thì lúc để relative sẽ chiếm diện tích 
+        và navbar không thể tự làm mờ trên nền ảnh được, còn có thì thêm thoải mái */}
+
+      <div className='hidden h-screen sm:flex relative'>
         {/* Nếu muốn ảnh chiếm diện tích, và đẩy thẻ div dưới xuống thì dùng h-screen để thẻ div chiếm diện tích,
         không thì thẻ div dưới sẽ bị đẩy lên vì không có chiều cao và độ rộng được định nghĩa, vì chỉ có ảnh là có thuộc tính fill mà thôi */}
         <div className='h-full'>
@@ -53,7 +56,7 @@ const HomeMain = () => {
         </div>
       </div>
 
-      <div className='mt-10 space-y-10'>
+      <div className='mt-28 space-y-10'>
         <div className='space-y-3'>
           <h1 className='ml-[1.5%] sm:text-2xl md:text-3xl'>Anime mới nhất mùa</h1>
           <div className='w-[98%] mx-auto grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4'>
