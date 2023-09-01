@@ -13,14 +13,16 @@ const HomeMain = () => {
 
   return (
     <div>
-      <div className='hidden sm:h-screen sm:flex'>
+      <div className='hidden  h-screen sm:flex '>
+        {/* Nếu muốn ảnh chiếm diện tích, và đẩy thẻ div dưới xuống thì dùng h-screen để thẻ div chiếm diện tích,
+        không thì thẻ div dưới sẽ bị đẩy lên vì không có chiều cao và độ rộng được định nghĩa */}
         <Image
           src='https://images3.alphacoders.com/132/1322308.jpeg'
           layout='fill'
           objectFit='cover'
           alt='background'
         ></Image>
-        <div className='absolute left-36 top-3/4 space-y-4'>
+        <div className='absolute left-36 top-1/2 space-y-4'>
           <h1 className='font-bold text-5xl'>Đây là tiêu đề</h1>
           <Button className='bg-white w-32 h-14 hover:bg-slate-300'>
             {' '}
@@ -32,19 +34,44 @@ const HomeMain = () => {
             <span className='font-bold'>Thông tin khác</span>
           </Button>
         </div>
+        <div className='absolute top-3/4 space-y-3'>
+          <h1 className='ml-[1.5%] sm:text-2xl md:text-3xl'>Anime mới nhất mùa</h1>
+          <div className='w-[98%] mx-auto grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4'>
+            <CardComponent item={item}></CardComponent>
+            <CardComponent item={item}></CardComponent>
+            <CardComponent item={item}></CardComponent>
+            <CardComponent item={item}></CardComponent>
+          </div>
+        </div>
       </div>
 
-      <div className='space-y-3'>
-        <h1 className='ml-[1.5%] sm:text-2xl md:text-3xl'>Anime mới nhất mùa</h1>
-        <div className='w-[98%] mx-auto grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4'>
-          <CardComponent item={item}></CardComponent>
-          <CardComponent item={item}></CardComponent>
-          <CardComponent item={item}></CardComponent>
-          <CardComponent item={item}></CardComponent>
-          <CardComponent item={item}></CardComponent>
-          <CardComponent item={item}></CardComponent>
-          <CardComponent item={item}></CardComponent>
-          <CardComponent item={item}></CardComponent>
+      <div className='mt-10 space-y-10'>
+        <div className='space-y-3'>
+          <h1 className='ml-[1.5%] sm:text-2xl md:text-3xl'>Anime mới nhất mùa</h1>
+          <div className='w-[98%] mx-auto grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4'>
+            <CardComponent item={item}></CardComponent>
+            <CardComponent item={item}></CardComponent>
+            <CardComponent item={item}></CardComponent>
+            <CardComponent item={item}></CardComponent>
+          </div>
+        </div>
+        <div className='space-y-3'>
+          <h1 className='ml-[1.5%] sm:text-2xl md:text-3xl'>Anime mới nhất mùa</h1>
+          <div className='w-[98%] mx-auto grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4'>
+            <CardComponent item={item}></CardComponent>
+            <CardComponent item={item}></CardComponent>
+            <CardComponent item={item}></CardComponent>
+            <CardComponent item={item}></CardComponent>
+          </div>
+        </div>
+        <div className='space-y-3'>
+          <h1 className='ml-[1.5%] sm:text-2xl md:text-3xl'>Anime mới nhất mùa</h1>
+          <div className='w-[98%] mx-auto grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4'>
+            <CardComponent item={item}></CardComponent>
+            <CardComponent item={item}></CardComponent>
+            <CardComponent item={item}></CardComponent>
+            <CardComponent item={item}></CardComponent>
+          </div>
         </div>
       </div>
     </div>
