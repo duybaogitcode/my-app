@@ -5,7 +5,8 @@ import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button } from '@n
 import Image from 'next/image';
 export default function Navigation() {
   return (
-    <Navbar>
+    // Để shouldHideOnScroll hoạt đồng thì cần thêm fixed cái navbar lại
+    <Navbar className='fixed' shouldHideOnScroll>
       <NavbarBrand>
         <p className='font-bold text-inherit'>AnimeWorld</p>
       </NavbarBrand>
@@ -32,7 +33,6 @@ export default function Navigation() {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify='end'>
-        <NavbarItem className='hidden lg:flex'>{/* <Link href='#'>Login</Link> */}</NavbarItem>
         <NavbarItem>
           <SearchInput></SearchInput>
         </NavbarItem>
