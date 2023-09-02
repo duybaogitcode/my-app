@@ -16,6 +16,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  console.log('Day la menu' + isMenuOpen);
 
   const menuItems = ['Trang chủ', 'Top Anime', 'Thể loại', 'Mùa'];
 
