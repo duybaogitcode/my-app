@@ -1,4 +1,6 @@
 import { Card, CardFooter, Image, Button } from '@nextui-org/react';
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import { useState } from 'react';
 
 export interface Item {
   title: string;
@@ -8,7 +10,11 @@ export interface Item {
 
 const CardComponent = ({ item }: { item: Item }) => {
   return (
-    <Card radius='lg' className='border-none'>
+    <Card
+      className='border-none rounded-lg transform hover:scale-125 hover:z-10'
+      isPressable
+      onClick={() => console.log('test')}
+    >
       <Image
         alt='Woman listing to music'
         src='https://images3.alphacoders.com/132/1322308.jpeg'
@@ -16,7 +22,7 @@ const CardComponent = ({ item }: { item: Item }) => {
       />
       <CardFooter className='justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10'>
         <p className='text-tiny text-white/80'>Sắp tới.</p>
-        <Button
+        {/* <Button
           className='text-tiny text-white bg-black/20'
           variant='flat'
           color='default'
@@ -24,7 +30,9 @@ const CardComponent = ({ item }: { item: Item }) => {
           size='sm'
         >
           Nhắc tôi
-        </Button>
+        </Button> */}
+
+        <NotificationsActiveIcon className='text-lg sm:text-2xl'></NotificationsActiveIcon>
       </CardFooter>
     </Card>
   );

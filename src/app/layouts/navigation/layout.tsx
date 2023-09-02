@@ -39,7 +39,7 @@ export default function Navigation() {
           <SearchInput></SearchInput>
         </NavbarItem>
         <NavbarItem>
-          <Button>Đăng nhập</Button>
+          <Button as={Link}>Đăng nhập</Button>
         </NavbarItem>
       </NavbarContent>
     </Navbar>
