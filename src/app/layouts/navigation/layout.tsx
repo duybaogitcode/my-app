@@ -11,6 +11,10 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
+  DropdownItem,
+  DropdownTrigger,
+  Dropdown,
+  DropdownMenu,
 } from '@nextui-org/react';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -20,6 +24,7 @@ export default function Navigation() {
 
   const menuItems = ['Trang chủ', 'Top Anime', 'Thể loại', 'Mùa'];
 
+  const icons = ['Nhất mùa', 'Nhất tháng', 'Nhất tuần'];
   return (
     // Để shouldHideOnScroll hoạt đồng thì cần thêm fixed cái navbar lại
     //   Nếu navbar không có className='fixed' shouldHideOnScroll thì lúc để relative sẽ chiếm diện tích
@@ -39,6 +44,33 @@ export default function Navigation() {
         <NavbarMenuToggle aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} />
       </NavbarContent>
       <NavbarContent className='hidden sm:flex gap-4 space-x-1' justify='center'>
+        <Dropdown>
+          <NavbarItem>
+            <DropdownTrigger>
+              <Button
+                disableRipple
+                className='p-0 bg-transparent data-[hover=true]:bg-transparent'
+                radius='sm'
+                variant='light'
+              >
+                Features
+              </Button>
+            </DropdownTrigger>
+          </NavbarItem>
+          <DropdownMenu
+            aria-label='ACME features'
+            className='w-[340px]'
+            itemClasses={{
+              base: 'gap-4',
+            }}
+          >
+            <DropdownItem key='autoscaling'>Autoscaling</DropdownItem>
+            <DropdownItem key='usage_metrics'>Usage Metrics</DropdownItem>
+            <DropdownItem key='production_ready'>Production Ready</DropdownItem>
+            <DropdownItem key='99_uptime'>+99% Uptime</DropdownItem>
+            <DropdownItem key='supreme_support'>+Supreme Support</DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
         <NavbarItem>
           <Link color='foreground' href='#'>
             Trang chủ
