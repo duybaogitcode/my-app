@@ -71,7 +71,7 @@ export default function Navigation() {
           <SearchInput></SearchInput>
         </NavbarItem>
         <NavbarItem>
-          <Link className='bg-slate-700 p-2 rounded-lg text-sm' href={'/login'}>
+          <Link className='bg-slate-700 p-3 rounded-lg text-sm' href={'/login'}>
             Đăng nhập
           </Link>
         </NavbarItem>
