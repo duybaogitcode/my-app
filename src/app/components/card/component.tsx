@@ -27,26 +27,28 @@ const CardComponent = ({ item }: { item: Item }) => {
       />
       {isHovered && (
         <CardFooter className='justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10'>
-          <p className='text-tiny text-white/80'>Tên Anime - Số tập - Độ tuổi.</p>
-          <Button
-            className='text-tiny text-white bg-white hover:bg-slate-300'
-            variant='flat'
-            color='default'
-            radius='lg'
-            size='sm'
-          >
-            {' '}
-            <PlayArrowIcon className='text-black text-lg sm:text-3xl'></PlayArrowIcon>
-          </Button>
-          <Button
-            className='text-tiny text-white bg-black/20  hover:bg-slate-500'
-            variant='flat'
-            color='default'
-            radius='lg'
-            size='sm'
-          >
-            <NotificationsActiveIcon className='text-lg sm:text-2xl'></NotificationsActiveIcon>
-          </Button>
+          <p className='text-tiny text-white/80'>Số tập - Độ tuổi - Độ trùng khớp.</p>
+          <div>
+            <Button
+              className='text-tiny text-white bg-white hover:bg-slate-300'
+              variant='flat'
+              color='default'
+              radius='lg'
+              size='sm'
+            >
+              {' '}
+              <PlayArrowIcon className='text-black text-lg sm:text-3xl'></PlayArrowIcon>
+            </Button>
+            <Button
+              className='text-tiny text-white bg-black/20  hover:bg-slate-500'
+              variant='flat'
+              color='default'
+              radius='lg'
+              size='sm'
+            >
+              <NotificationsActiveIcon className='text-lg sm:text-2xl'></NotificationsActiveIcon>
+            </Button>
+          </div>
         </CardFooter>
       )}
     </Card>

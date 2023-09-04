@@ -6,7 +6,6 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
   Button,
   NavbarMenuToggle,
   NavbarMenu,
@@ -17,7 +16,9 @@ import {
   DropdownMenu,
 } from '@nextui-org/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
+
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   console.log('Day la menu' + isMenuOpen);
@@ -70,19 +71,20 @@ export default function Navigation() {
           <SearchInput></SearchInput>
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link}>Đăng nhập</Button>
+          <Link className='bg-slate-700 p-2 rounded-lg text-sm' href={'/login'}>
+            Đăng nhập
+          </Link>
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link
-              className='w-full'
+              className='w-full text-lg'
               color={
                 index === 2 ? 'warning' : index === menuItems.length - 1 ? 'danger' : 'foreground'
               }
               href='#'
-              size='lg'
             >
               {item}
             </Link>

@@ -1,6 +1,6 @@
 'use client';
 
-import HomeMain from '../components/homeMain/component';
+import HomeMain from '../../components/homeMain/component';
 
 export default function Page() {
   return (
