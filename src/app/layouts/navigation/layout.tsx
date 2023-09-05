@@ -38,7 +38,9 @@ export default function Navigation() {
       onMenuOpenChange={setIsMenuOpen}
     >
       <NavbarBrand>
-        <p className='font-bold text-inherit'>AnimeWorld</p>
+        <Link href={'/'} className='font-bold text-inherit'>
+          AnimeWorld
+        </Link>
       </NavbarBrand>
 
       <NavbarContent className='sm:hidden' justify='start'>
