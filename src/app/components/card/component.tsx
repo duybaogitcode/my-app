@@ -5,6 +5,7 @@ import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import { useState } from 'react';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import AddIcon from '@mui/icons-material/Add';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 export interface Item {
   title: string;
@@ -32,15 +33,21 @@ const CardComponent = ({ item }: { item: Item }) => {
             Số tập - Độ tuổi - Độ trùng khớp
           </p>
           <div className='space-x-5 flex-row flex'>
-            <div className='flex justify-center items-center text-white w-5 h-5 bg-white rounded-full hover:bg-slate-300 sm:w-10 sm:h-10'>
+            <div className='flex justify-center items-center text-white w-5 h-5 bg-white rounded-full  hover:bg-slate-300 sm:w-7 sm:h-7 lg:w-10 lg:h-10'>
               {' '}
-              <PlayArrowIcon className='text-black text-lg sm:text-3xl'></PlayArrowIcon>
+              <PlayArrowIcon className='text-black text-lg sm:text-xl lg:text-3xl'></PlayArrowIcon>
             </div>
-            <div className='flex justify-center items-center text-white w-5 h-5 bg-black rounded-full hover:bg-slate-300 sm:w-10 sm:h-10'>
-              <NotificationsActiveIcon className='text-lg sm:text-2xl'></NotificationsActiveIcon>
+            <div className='flex justify-center items-center text-white w-5 h-5 bg-black rounded-full shadow-xl hover:shadow-gray-50 sm:w-7 sm:h-7 lg:w-10 lg:h-10'>
+              <NotificationsActiveIcon className='text-lg sm:text-xl lg:text-2xl'></NotificationsActiveIcon>
             </div>
-            <div className='flex justify-center items-center text-white w-5 h-5 bg-black rounded-full hover:bg-slate-300 sm:w-10 sm:h-10'>
-              <AddIcon className='text-lg sm:text-2xl'></AddIcon>
+            <div className='flex justify-center items-center text-white w-5 h-5 bg-black rounded-full shadow-xl hover:shadow-gray-500 sm:w-7 sm:h-7 lg:w-10 lg:h-10'>
+              <AddIcon className='text-lg sm:text-xl lg:text-2xl'></AddIcon>
+            </div>
+            <div
+              onClick={() => console.log('test nut drop')}
+              className='flex justify-center items-center text-white w-5 h-5 bg-black rounded-full shadow-xl hover:shadow-gray-50 sm:w-7 sm:h-7 lg:w-10 lg:h-10'
+            >
+              <ArrowDropDownIcon className='text-lg sm:text-xl lg:text-2xl'></ArrowDropDownIcon>
             </div>
           </div>
         </CardFooter>
