@@ -18,6 +18,7 @@ import { useState } from 'react';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import AddIcon from '@mui/icons-material/Add';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import Episode from '../episode/component';
 
 export interface Item {
   title: string;
@@ -28,6 +29,11 @@ export interface Item {
 const CardComponent = ({ item }: { item: Item }) => {
   const [isHovered, setIsHovered] = useState(false);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  const episodeItem = Array.from({ length: 10 });
+  const renderedEpisodes = episodeItem.map((episode, index: number) => (
+    <Episode key={index} index={index} />
+  ));
 
   return (
     <Card
@@ -68,7 +74,13 @@ const CardComponent = ({ item }: { item: Item }) => {
           </div>
         </CardFooter>
       )}
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange} isDismissable={false} size='4xl'>
+      <Modal
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        isDismissable={false}
+        size='4xl'
+        scrollBehavior='outside'
+      >
         <ModalContent>
           {(onClose) => (
             <>
@@ -79,11 +91,10 @@ const CardComponent = ({ item }: { item: Item }) => {
                   src='https://images3.alphacoders.com/132/1322308.jpeg'
                   className='object-cover'
                 />
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non
-                  risus hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor
-                  quam.
-                </p>
+                <section className='mt-2'>
+                  <h4>Độ trùng: 90% 2023 12 tập</h4>
+                  <p>Độ tuổi - Thể loại: Hài hước, tình cảm</p>
+                </section>
                 <p>
                   Magna exercitation reprehenderit magna aute tempor cupidatat consequat elit dolor
                   adipisicing. Mollit dolor eiusmod sunt ex incididunt cillum quis. Velit duis sit
@@ -91,6 +102,8 @@ const CardComponent = ({ item }: { item: Item }) => {
                   nisi consectetur esse laborum eiusmod pariatur proident Lorem eiusmod et. Culpa
                   deserunt nostrud ad veniam.
                 </p>
+                <h2 className='text-2xl'>Tập</h2>
+                <section className='space-y-5'>{renderedEpisodes}</section>
               </ModalBody>
               <ModalFooter>
                 <Button color='danger' variant='light' onPress={onClose}>
