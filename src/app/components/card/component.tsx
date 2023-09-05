@@ -1,6 +1,18 @@
 'use client';
 
-import { Card, CardFooter, Image, Button, Link } from '@nextui-org/react';
+import {
+  Card,
+  CardFooter,
+  Image,
+  Button,
+  Link,
+  useDisclosure,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from '@nextui-org/react';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import { useState } from 'react';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -15,6 +27,7 @@ export interface Item {
 
 const CardComponent = ({ item }: { item: Item }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
     <Card
@@ -47,11 +60,50 @@ const CardComponent = ({ item }: { item: Item }) => {
               onClick={() => console.log('test nut drop')}
               className='flex justify-center items-center text-white w-5 h-5 bg-black rounded-full shadow-xl hover:shadow-gray-50 sm:w-7 sm:h-7 lg:w-10 lg:h-10'
             >
-              <ArrowDropDownIcon className='text-lg sm:text-xl lg:text-2xl'></ArrowDropDownIcon>
+              <ArrowDropDownIcon
+                onClick={onOpen}
+                className='text-lg sm:text-xl lg:text-2xl'
+              ></ArrowDropDownIcon>
             </div>
           </div>
         </CardFooter>
       )}
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange} isDismissable={false} size='4xl'>
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className='flex flex-col gap-1'>Tên Anime</ModalHeader>
+              <ModalBody>
+                <Image
+                  alt='Woman listing to music'
+                  src='https://images3.alphacoders.com/132/1322308.jpeg'
+                  className='object-cover'
+                />
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non
+                  risus hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor
+                  quam.
+                </p>
+                <p>
+                  Magna exercitation reprehenderit magna aute tempor cupidatat consequat elit dolor
+                  adipisicing. Mollit dolor eiusmod sunt ex incididunt cillum quis. Velit duis sit
+                  officia eiusmod Lorem aliqua enim laboris do dolor eiusmod. Et mollit incididunt
+                  nisi consectetur esse laborum eiusmod pariatur proident Lorem eiusmod et. Culpa
+                  deserunt nostrud ad veniam.
+                </p>
+              </ModalBody>
+              <ModalFooter>
+                <Button color='danger' variant='light' onPress={onClose}>
+                  Close
+                </Button>
+                <Button color='primary' onPress={onClose}>
+                  Action
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </Card>
   );
 };
