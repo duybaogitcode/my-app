@@ -34,10 +34,13 @@ const HomeMain = () => {
         </div>
         <div className='absolute left-10 top-1/2 sm:left-36 space-y-4'>
           <h1 className='font-bold text-3xl sm:text-5xl'>Đây là tiêu đề</h1>
-          <Button className='bg-white w-24 h-9 sm:bg-white sm:w-32 sm:h-14 hover:bg-slate-300'>
-            {' '}
-            <PlayArrowIcon className='text-black text-3xl'></PlayArrowIcon>
-          </Button>
+
+          <Link href={'video'}>
+            <Button className='bg-white w-24 h-9 sm:bg-white sm:w-32 sm:h-14 hover:bg-slate-300'>
+              <PlayArrowIcon className='text-black text-3xl'></PlayArrowIcon>
+            </Button>
+          </Link>
+
           <Button className='bg-slate-400 h-9 w-24 sm:w-44 sm:h-14 hover:bg-slate-300 mx-2 '>
             {' '}
             <InfoIcon className='text-3xl'></InfoIcon>{' '}
