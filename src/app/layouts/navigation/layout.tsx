@@ -58,20 +58,43 @@ export default function Navigation() {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color='foreground' href='#'>
-            Thể loại
-          </Link>
+          <Dropdown className='bg-gradient-to-b from-transparent to-gray-900 opacity-80'>
+            <DropdownTrigger className='cursor-pointer'>Thể loại</DropdownTrigger>
+            <DropdownMenu aria-label='Static Actions' className=' grid grid-cols-4'>
+              <DropdownItem key='new'>Hài hước</DropdownItem>
+              <DropdownItem key='copy'>Tình cảm</DropdownItem>
+              <DropdownItem key='edit'>Hành động</DropdownItem>
+              <DropdownItem key='delete' className='text-danger' color='danger'>
+                Người lớn
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
         </NavbarItem>
         <NavbarItem>
-          <Link color='foreground' href='#'>
-            Mùa
-          </Link>
+          <Dropdown className='bg-gradient-to-b from-transparent to-gray-900 opacity-80 '>
+            <DropdownTrigger className='cursor-pointer'>Mùa</DropdownTrigger>
+            <DropdownMenu aria-label='Static Actions' className='grid grid-cols-2'>
+              <DropdownItem key='new' className='text-center'>
+                2023
+              </DropdownItem>
+              <DropdownItem key='copy' className='text-center'>
+                2022
+              </DropdownItem>
+              <DropdownItem key='edit' className='text-center'>
+                2021
+              </DropdownItem>
+              <DropdownItem key='edit' className='text-center'>
+                2020
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify='end'>
         <NavbarItem>
           <SearchInput></SearchInput>
         </NavbarItem>
+
         <NavbarItem>
           <Link className='bg-slate-700 p-3 rounded-lg text-sm' href={'/login'}>
             Đăng nhập
