@@ -12,6 +12,8 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
+  Select,
+  SelectItem,
 } from '@nextui-org/react';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import { useState } from 'react';
@@ -26,9 +28,19 @@ export interface Item {
   category: string[];
 }
 
+type Season = {
+  id: string;
+  title: string;
+};
+
 const CardComponent = ({ item }: { item: Item }) => {
   const [isHovered, setIsHovered] = useState(false);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const seasons: Season[] = [
+    { id: '123', title: 'Phần 1: Mollit dolor eiusmod sunt ex incididunt cillum quis' },
+    { id: '1234', title: 'Phần 2: Mollit dolor eiusmod sunt ex incididunt cillum quis' },
+    { id: '12345', title: 'Phần 3: Mollit dolor eiusmod sunt ex incididunt cillum quis' },
+  ];
 
   const episodeItem = Array.from({ length: 10 });
   const renderedEpisodes = episodeItem.map((episode, index: number) => (
@@ -102,7 +114,18 @@ const CardComponent = ({ item }: { item: Item }) => {
                   nisi consectetur esse laborum eiusmod pariatur proident Lorem eiusmod et. Culpa
                   deserunt nostrud ad veniam.
                 </p>
-                <h2 className='text-2xl'>Tập</h2>
+                <Select
+                  isRequired
+                  label='Mùa phim'
+                  defaultSelectedKeys={['123']}
+                  className='max-w-xs'
+                >
+                  {seasons.map((season) => (
+                    <SelectItem key={season.id} value={season.title}>
+                      {season.title}
+                    </SelectItem>
+                  ))}
+                </Select>
                 <section className='space-y-5'>{renderedEpisodes}</section>
               </ModalBody>
               <ModalFooter>

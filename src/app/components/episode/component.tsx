@@ -1,6 +1,7 @@
 'use client';
 
 import { Card, CardBody, Image } from '@nextui-org/react';
+import { Select, SelectItem } from '@nextui-org/react';
 import React from 'react';
 
 export default function Episode({ index }: { index: number }) {
