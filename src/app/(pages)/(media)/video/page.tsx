@@ -5,6 +5,8 @@ import { useState, useRef, useEffect } from 'react';
 import { FullScreen, useFullScreenHandle } from 'react-full-screen';
 import axios from 'axios';
 import { Envs } from '../../../ultis/envs';
+import Episode from '@/app/components/episode/component';
+import TabComponent from '@/app/components/tabs/component';
 
 const ReactPlayer = dynamic(() => import('react-player'), {
   ssr: false,
@@ -41,10 +43,7 @@ const Video = () => {
   const [progress, setProgress] = useState(0);
 
   const handleFullScreen = useFullScreenHandle();
-
-  const preview = () => {
-    console.log('Preview');
-  };
+  const [duration, setDuration] = useState(0);
 
   const handleFullScreenToggle = () => {
     if (isFullScreen) {
@@ -64,21 +63,22 @@ const Video = () => {
     console.log(response.text());
   };
 
-  useEffect(() => {}, []);
-
-  const cookieValue = 'H4HXB_j2Fd0';
-
   const handleProgress = (state: OnProgressProps) => {
     const currentTime = state.playedSeconds;
-    const percentage = (currentTime / state.loadedSeconds) * 100;
-    // console.log(percentage);
+    const percentage = (currentTime / duration) * 100;
+    console.log(percentage);
     setProgress(percentage);
   };
 
+  const episodeItem = Array.from({ length: 10 });
+  const renderedEpisodes = episodeItem.map((episode, index: number) => (
+    <Episode key={index} index={index} />
+  ));
+
   return (
-    <div className='h-screen'>
-      <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
-        <FullScreen handle={handleFullScreen} className='h-[730px] w-[1279px]'>
+    <div className='py-[5%] grid grid-row-3 grid-flow-col gap-4'>
+      <div className=' row-span-3 '>
+        <FullScreen handle={handleFullScreen} className='h-[730px] w-[1279px] relative'>
           <ReactPlayer
             url={
               'https://www.dailymotion.com/embed/video/x8nxyq0?autoplay=1%22%20width=%22100%%22%20height=%22100%%22%20allowfullscreen%20title=%22Dailymotion%20Video%20Player%22%20allow=%22autoplay'
@@ -88,18 +88,22 @@ const Video = () => {
             width={'100%'}
             height={'100%'}
             playing={playing}
-            progressInterval={1000}
+            progressInterval={10}
             onProgress={handleProgress}
-            showPreview={preview}
+            onDuration={(d) => setDuration(d)}
           />
+          <section className='flex absolute top-[95%] w-[100%]'>
+            <Button onClick={() => setPlaying(!playing)}>{playing ? 'Tạm dừng' : 'Phát'}</Button>
+            {/* <span>Thời lượng: {duration} giây</span> */}
+            <Progress value={progress} className='max-w-md mx-auto' />
+            <Button onClick={handleFullScreen.enter}>Chế độ toàn màn hình</Button>
+          </section>
         </FullScreen>
-        <section className='flex justify-between'>
-          <Button onClick={() => setPlaying(!playing)}>{playing ? 'Tạm dừng' : 'Phát'}</Button>
-          <Button onClick={handleFullScreen.enter}>Chế độ toàn màn hình</Button>
-          <Button onClick={linkhref}>Link</Button>
-        </section>
-        {/* <Progress value={progress} className='max-w-md mx-auto' /> */}
       </div>
+      <div className='ml-7 col-span-2'>
+        <TabComponent></TabComponent>
+      </div>
+      <div className='row-span-2 col-span-2'>{renderedEpisodes}</div>
     </div>
   );
 };
