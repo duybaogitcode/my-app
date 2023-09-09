@@ -7,6 +7,10 @@ import axios from 'axios';
 import { Envs } from '../../../ultis/envs';
 import Episode from '@/app/components/episode/component';
 import TabComponent from '@/app/components/tabs/component';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PauseIcon from '@mui/icons-material/Pause';
+import FullscreenIcon from '@mui/icons-material/Fullscreen';
+import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
 
 const ReactPlayer = dynamic(() => import('react-player'), {
   ssr: false,
@@ -66,7 +70,6 @@ const Video = () => {
   const handleProgress = (state: OnProgressProps) => {
     const currentTime = state.playedSeconds;
     const percentage = (currentTime / duration) * 100;
-    console.log(percentage);
     setProgress(percentage);
   };
 
@@ -91,12 +94,23 @@ const Video = () => {
             progressInterval={10}
             onProgress={handleProgress}
             onDuration={(d) => setDuration(d)}
+            onMouseDown={() => console.log('video')}
           />
-          <section className='flex absolute top-[95%] w-[100%]'>
-            <Button onClick={() => setPlaying(!playing)}>{playing ? 'Tạm dừng' : 'Phát'}</Button>
+          <section className='flex items-center absolute top-[95%] w-[100%]'>
+            <div onClick={() => setPlaying(!playing)}>
+              {playing ? <PauseIcon></PauseIcon> : <PlayArrowIcon></PlayArrowIcon>}
+            </div>
+
             {/* <span>Thời lượng: {duration} giây</span> */}
-            <Progress value={progress} className='max-w-md mx-auto' />
-            <Button onClick={handleFullScreen.enter}>Chế độ toàn màn hình</Button>
+            <Progress value={progress} className='max-w-[90%] mx-auto' color='danger' />
+
+            <div onClick={handleFullScreenToggle}>
+              {isFullScreen ? (
+                <FullscreenExitIcon></FullscreenExitIcon>
+              ) : (
+                <FullscreenIcon></FullscreenIcon>
+              )}
+            </div>
           </section>
         </FullScreen>
       </div>
