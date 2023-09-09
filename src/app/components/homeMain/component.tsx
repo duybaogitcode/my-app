@@ -34,13 +34,11 @@ const HomeMain = () => {
         </div>
         <div className='absolute left-10 top-1/2 sm:left-36 space-y-4'>
           <h1 className='font-bold text-3xl sm:text-5xl'>Đây là tiêu đề</h1>
-
-          <Link href={'video'}>
+          <Link href={'/video'}>
             <Button className='bg-white w-24 h-9 sm:bg-white sm:w-32 sm:h-14 hover:bg-slate-300'>
               <PlayArrowIcon className='text-black text-3xl'></PlayArrowIcon>
             </Button>
           </Link>
-
           <Button className='bg-slate-400 h-9 w-24 sm:w-44 sm:h-14 hover:bg-slate-300 mx-2 '>
             {' '}
             <InfoIcon className='text-3xl'></InfoIcon>{' '}
@@ -50,7 +48,7 @@ const HomeMain = () => {
 
         {/* Nên dùng absolute vì để nó không chiếm diện tích của thẻ div */}
         <div className='absolute top-[75%] md:max-xl:top-[85%] 2xl:top-3/4 space-y-3'>
-          <h1 className='ml-[1.5%] sm:text-2xl md:text-3xl'>Anime mới nhất mùa</h1>
+          <h1 className='ml-[1.5%] sm:text-2xl md:text-3xl'>Phim mới nhất mùa</h1>
           <div className='w-[98%] mx-auto grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4'>
             <CardComponent item={item}></CardComponent>
             <CardComponent item={item}></CardComponent>
@@ -62,7 +60,7 @@ const HomeMain = () => {
 
       <div className='mt-32 sm:mt-28 space-y-10'>
         <div className='space-y-3'>
-          <h1 className='ml-[1.5%] sm:text-2xl md:text-3xl'>Anime mới nhất mùa</h1>
+          <h1 className='ml-[1.5%] sm:text-2xl md:text-3xl'>Phim mới nhất mùa</h1>
           <div className='w-[98%] mx-auto grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4'>
             <CardComponent item={item}></CardComponent>
             <CardComponent item={item}></CardComponent>
@@ -71,7 +69,7 @@ const HomeMain = () => {
           </div>
         </div>
         <div className='top3/4 space-y-3'>
-          <h1 className='ml-[1.5%] sm:text-2xl md:text-3xl'>Anime mới nhất mùa</h1>
+          <h1 className='ml-[1.5%] sm:text-2xl md:text-3xl'>Phim mới nhất mùa</h1>
           <div className='w-[98%] mx-auto grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4'>
             <CardComponent item={item}></CardComponent>
             <CardComponent item={item}></CardComponent>
@@ -80,7 +78,7 @@ const HomeMain = () => {
           </div>
         </div>
         <div className='space-y-3'>
-          <h1 className='ml-[1.5%] sm:text-2xl md:text-3xl'>Anime mới nhất mùa</h1>
+          <h1 className='ml-[1.5%] sm:text-2xl md:text-3xl'>Phim mới nhất mùa</h1>
           <div className='w-[98%] mx-auto grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4'>
             <CardComponent item={item}></CardComponent>
             <CardComponent item={item}></CardComponent>

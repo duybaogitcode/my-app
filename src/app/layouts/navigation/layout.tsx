@@ -39,7 +39,7 @@ export default function Navigation() {
     >
       <NavbarBrand>
         <Link href={'/'} className='font-bold text-inherit'>
-          AnimeWorld
+          MovieWorld
         </Link>
       </NavbarBrand>
 
@@ -54,7 +54,7 @@ export default function Navigation() {
         </NavbarItem>
         <NavbarItem>
           <Link color='foreground' href='#'>
-            Top Anime
+            Top Phim
           </Link>
         </NavbarItem>
         <NavbarItem>

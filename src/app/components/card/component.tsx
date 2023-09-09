@@ -64,10 +64,12 @@ const CardComponent = ({ item }: { item: Item }) => {
             Số tập - Độ tuổi - Độ trùng khớp
           </p>
           <div className='space-x-5 flex-row flex'>
-            <div className='flex justify-center items-center text-white w-5 h-5 bg-white rounded-full  hover:bg-slate-300 sm:w-7 sm:h-7 lg:w-10 lg:h-10'>
-              {' '}
-              <PlayArrowIcon className='text-black text-lg sm:text-xl lg:text-3xl'></PlayArrowIcon>
-            </div>
+            <Link href='/video'>
+              <div className='flex justify-center items-center text-white w-5 h-5 bg-white rounded-full  hover:bg-slate-300 sm:w-7 sm:h-7 lg:w-10 lg:h-10'>
+                {' '}
+                <PlayArrowIcon className='text-black text-lg sm:text-xl lg:text-3xl'></PlayArrowIcon>
+              </div>
+            </Link>
             <div className='flex justify-center items-center text-white w-5 h-5 bg-black rounded-full shadow-xl hover:shadow-gray-50 sm:w-7 sm:h-7 lg:w-10 lg:h-10'>
               <NotificationsActiveIcon className='text-lg sm:text-xl lg:text-2xl'></NotificationsActiveIcon>
             </div>

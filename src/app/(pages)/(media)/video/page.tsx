@@ -1,5 +1,5 @@
 'use client';
-import { Button, Progress } from '@nextui-org/react';
+import { Avatar, Button, Pagination, Progress, Textarea, User } from '@nextui-org/react';
 import dynamic from 'next/dynamic';
 import { useState, useRef, useEffect } from 'react';
 import { FullScreen, useFullScreenHandle } from 'react-full-screen';
@@ -11,6 +11,13 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
+import { Accordion, AccordionItem } from '@nextui-org/react';
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
+
+import Link from 'next/link';
+import CommentComponent from '@/app/components/comment/component';
 
 const ReactPlayer = dynamic(() => import('react-player'), {
   ssr: false,
@@ -34,6 +41,8 @@ export interface OnProgressProps {
   loadedSeconds: number;
 }
 
+const defaultContent =
+  '« Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. »';
 interface Link {
   formatId: number;
   link: string;
@@ -48,6 +57,13 @@ const Video = () => {
 
   const handleFullScreen = useFullScreenHandle();
   const [duration, setDuration] = useState(0);
+
+  const [value, setValue] = useState<number | null>(4.5);
+
+  const cmtItems = Array.from({ length: 4 });
+  const cmtRenders = cmtItems.map((item, index: number) => (
+    <CommentComponent key={index} index={index} />
+  ));
 
   const handleFullScreenToggle = () => {
     if (isFullScreen) {
@@ -79,8 +95,8 @@ const Video = () => {
   ));
 
   return (
-    <div className='py-[5%] grid grid-row-3 grid-flow-col gap-4'>
-      <div className=' row-span-3 '>
+    <div className='py-[5%] grid grid-row-3 grid-flow-col gap-4 ml-[3%]'>
+      <div className=' row-span-3 space-y-5'>
         <FullScreen handle={handleFullScreen} className='h-[730px] w-[1279px] relative'>
           <ReactPlayer
             url={
@@ -102,7 +118,7 @@ const Video = () => {
             </div>
 
             {/* <span>Thời lượng: {duration} giây</span> */}
-            <Progress value={progress} className='max-w-[90%] mx-auto' color='danger' />
+            <Progress value={progress} size='sm' className='max-w-[90%] mx-auto' color='danger' />
 
             <div onClick={handleFullScreenToggle}>
               {isFullScreen ? (
@@ -113,9 +129,62 @@ const Video = () => {
             </div>
           </section>
         </FullScreen>
+        <section className='space-y-5'>
+          <h1 className='text-3xl'>Lorem ipsum dolor sit amet, consectetur adipisci elit</h1>
+          <div className='flex items-center space-x-4'>
+            <User
+              name='Nhóm dịch'
+              description={<Link href='#'>@Nhóm dịch</Link>}
+              avatarProps={{
+                src: 'https://i.pinimg.com/1200x/32/6f/7c/326f7cd6429cf76c88bd4d61c20ac716.jpg',
+              }}
+            />
+
+            <Rating name='read-only' value={value} readOnly />
+          </div>
+          <section className='bg-zinc-900 rounded-lg space-y-3'>
+            <h1 className='ml-2'>Lượt xem: number Ngày đăng: year Thể loại: Category</h1>
+            <article>
+              {' '}
+              <Accordion variant='light'>
+                <AccordionItem key='1' aria-label='description' subtitle='Ấn để xem' title='Mô tả'>
+                  {defaultContent}
+                </AccordionItem>
+              </Accordion>
+            </article>
+          </section>
+        </section>
+
+        <div className='space-y-5'>
+          <Box
+            sx={{
+              '& > legend': { mt: 2 },
+            }}
+          >
+            <Typography component='legend'>Đánh giá | Chấm điểm</Typography>
+            <Rating
+              name='simple-controlled'
+              value={value}
+              // onChange={(event, newValue) => {
+              //   setValue(newValue);
+              // }}
+              className='bg-zinc-800'
+            />
+          </Box>
+          <Textarea
+            label='Bình luận'
+            labelPlacement='outside'
+            placeholder='Nhập bình luận của bạn...'
+            className='w-full'
+          />
+        </div>
+
+        {cmtRenders}
+        <Pagination total={10} initialPage={1} />
       </div>
       <div className='ml-7 col-span-2'>
         <TabComponent></TabComponent>
+        <h3 className='ml-2 mt-3 text-2xl'>Tập 1-10</h3>
       </div>
       <div className='row-span-2 col-span-2'>{renderedEpisodes}</div>
     </div>
