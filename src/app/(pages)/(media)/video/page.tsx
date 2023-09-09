@@ -78,7 +78,7 @@ const Video = () => {
   return (
     <div className='h-screen'>
       <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
-        <FullScreen handle={handleFullScreen} className='bg-white h-[730px] w-[1279px]'>
+        <FullScreen handle={handleFullScreen} className='h-[730px] w-[1279px]'>
           <ReactPlayer
             url={
               'https://www.dailymotion.com/embed/video/x8nxyq0?autoplay=1%22%20width=%22100%%22%20height=%22100%%22%20allowfullscreen%20title=%22Dailymotion%20Video%20Player%22%20allow=%22autoplay'
