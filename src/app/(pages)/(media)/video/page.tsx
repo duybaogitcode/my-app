@@ -42,6 +42,10 @@ const Video = () => {
 
   const handleFullScreen = useFullScreenHandle();
 
+  const preview = () => {
+    console.log('Preview');
+  };
+
   const handleFullScreenToggle = () => {
     if (isFullScreen) {
       handleFullScreen.exit();
@@ -60,9 +64,7 @@ const Video = () => {
     console.log(response.text());
   };
 
-  useEffect(() => {
-    // getStreamingLink();
-  }, []);
+  useEffect(() => {}, []);
 
   const cookieValue = 'H4HXB_j2Fd0';
 
@@ -76,22 +78,24 @@ const Video = () => {
   return (
     <div className='h-screen'>
       <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
-        <FullScreen handle={handleFullScreen} className='bg-white'>
+        <FullScreen handle={handleFullScreen} className='bg-white h-[730px] w-[1279px]'>
           <ReactPlayer
             url={
               'https://www.dailymotion.com/embed/video/x8nxyq0?autoplay=1%22%20width=%22100%%22%20height=%22100%%22%20allowfullscreen%20title=%22Dailymotion%20Video%20Player%22%20allow=%22autoplay'
             }
-            width={isFullScreen ? '100%' : '1279px'}
-            height={isFullScreen ? '100%' : '730px'}
-            // controls={true}
+            // width={isFullScreen ? '100%' : '1279px'}
+            // height={isFullScreen ? '100%' : '730px'}
+            width={'100%'}
+            height={'100%'}
             playing={playing}
             progressInterval={1000}
             onProgress={handleProgress}
+            showPreview={preview}
           />
         </FullScreen>
         <section className='flex justify-between'>
           <Button onClick={() => setPlaying(!playing)}>{playing ? 'Tạm dừng' : 'Phát'}</Button>
-          <Button onClick={handleFullScreenToggle}>Chế độ toàn màn hình</Button>
+          <Button onClick={handleFullScreen.enter}>Chế độ toàn màn hình</Button>
           <Button onClick={linkhref}>Link</Button>
         </section>
         {/* <Progress value={progress} className='max-w-md mx-auto' /> */}
