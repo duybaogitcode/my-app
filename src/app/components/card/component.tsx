@@ -43,8 +43,12 @@ const CardComponent = ({ item }: { item: Item }) => {
   ];
 
   const episodeItem = Array.from({ length: 10 });
-  const renderedEpisodes = episodeItem.map((episode, index: number) => (
-    <Episode key={index} index={index} />
+  const episodePropsArray = Array.from({ length: 10 }).map(() => ({
+    isInModal: true,
+    isInVideoDetail: false,
+  }));
+  const renderedEpisodes = episodePropsArray.map((episodeProps, index) => (
+    <Episode key={index} episodeProps={episodeProps} />
   ));
 
   return (

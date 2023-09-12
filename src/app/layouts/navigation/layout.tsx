@@ -48,7 +48,7 @@ export default function Navigation() {
       </NavbarContent>
       <NavbarContent className='hidden sm:flex gap-4 space-x-1' justify='center'>
         <NavbarItem>
-          <Link color='foreground' href='#'>
+          <Link color='foreground' href={'/'}>
             Trang chủ
           </Link>
         </NavbarItem>

@@ -22,15 +22,11 @@ import CommentComponent from '@/app/components/comment/component';
 const ReactPlayer = dynamic(() => import('react-player'), {
   ssr: false,
 });
-const playerVars = {
-  playlist: [
-    'https://rr2---sn-npoeene6.c.drive.google.com/videoplayback?expire=1694161708&ei=_LD6ZLSVDNCTrvIP_Ny3uA0&ip=2405:4802:9017:c3c0:e80d:3489:6172:dc94&cp=QVROVkJfUFdOSVhPOnNPUEg0bXlUaTltXzZBVjdCV1A0M0xQMTF6QkhsWEozUDlQMmdEMlc0Z1c&id=a3029fd027e67d2a&itag=37&source=webdrive&requiressl=yes&mh=7e&mm=32&mn=sn-npoeene6&ms=su&mv=m&mvi=2&pl=44&ttl=transient&susc=dr&driveid=1qNeTdt2Aj-PdXVvM1rNKmOjC7PKWG0lZ&app=explorer&mime=video/mp4&vprv=1&prv=1&dur=209.142&lmt=1694037750178981&mt=1694150447&subapp=DRIVE_WEB_FILE_VIEWER&txp=0001224&sparams=expire%2Cei%2Cip%2Ccp%2Cid%2Citag%2Csource%2Crequiressl%2Cttl%2Csusc%2Cdriveid%2Capp%2Cmime%2Cvprv%2Cprv%2Cdur%2Clmt&sig=AOq0QJ8wRgIhAOra69-7QBkPKxscNQ6QBLpUGWzOQeK-3mVCl_zTuLleAiEA-w05kYoTwnm_-DejbyJqjHY0G-FW90jvg8Brd2PvIEg=&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl&lsig=AG3C_xAwRQIgXqlDHM2rOCQwNo7B5MRjNBS-Xu5YBvAzwZ6A829h8NQCIQClrC7kAgYAMKUimxvwho_2c9fdsfTtRPGZDnZ7nXtKaA==',
-    'https://rr2---sn-npoeene6.c.drive.google.com/videoplayback?expire=1694161708&ei=_LD6ZLSVDNCTrvIP_Ny3uA0&ip=2405:4802:9017:c3c0:e80d:3489:6172:dc94&cp=QVROVkJfUFdOSVhPOnNPUEg0bXlUaTltXzZBVjdCV1A0M0xQMTF6QkhsWEozUDlQMmdEMlc0Z1c&id=a3029fd027e67d2a&itag=37&source=webdrive&requiressl=yes&mh=7e&mm=32&mn=sn-npoeene6&ms=su&mv=m&mvi=2&pl=44&ttl=transient&susc=dr&driveid=1qNeTdt2Aj-PdXVvM1rNKmOjC7PKWG0lZ&app=explorer&mime=video/mp4&vprv=1&prv=1&dur=209.142&lmt=1694037750178981&mt=1694150447&subapp=DRIVE_WEB_FILE_VIEWER&txp=0001224&sparams=expire%2Cei%2Cip%2Ccp%2Cid%2Citag%2Csource%2Crequiressl%2Cttl%2Csusc%2Cdriveid%2Capp%2Cmime%2Cvprv%2Cprv%2Cdur%2Clmt&sig=AOq0QJ8wRgIhAOra69-7QBkPKxscNQ6QBLpUGWzOQeK-3mVCl_zTuLleAiEA-w05kYoTwnm_-DejbyJqjHY0G-FW90jvg8Brd2PvIEg=&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl&lsig=AG3C_xAwRQIgXqlDHM2rOCQwNo7B5MRjNBS-Xu5YBvAzwZ6A829h8NQCIQClrC7kAgYAMKUimxvwho_2c9fdsfTtRPGZDnZ7nXtKaA==',
-  ] as string[],
-};
 
-const url =
-  'https://drive.google.com/u/0/get_video_info?docid=1RSw_z1nETTgQ6i-Jr588Uz5kgH-RO-48&drive_originator_app=303';
+interface episodeFormat {
+  isInModal: boolean;
+  isInVideoDetail: boolean;
+}
 
 // khi không tìm được kiểu dữ liệu thì ấn thẳng vào thư viện để xem cách thuộc tính và copy kiểu dữ liệu của nó ra luôn
 
@@ -65,24 +61,18 @@ const Video = () => {
     <CommentComponent key={index} index={index} />
   ));
 
-  const linkhref = async () => {
-    const proxyUrl =
-      'http://localhost:8000/get_video_info?docid=1RSw_z1nETTgQ6i-Jr588Uz5kgH-RO-48&drive_originator_app=303';
-
-    const response = await fetch(proxyUrl);
-
-    console.log(response.text());
-  };
-
   const handleProgress = (state: OnProgressProps) => {
     const currentTime = state.playedSeconds;
     const percentage = (currentTime / duration) * 100;
     setProgress(percentage);
   };
 
-  const episodeItem = Array.from({ length: 10 });
-  const renderedEpisodes = episodeItem.map((episode, index: number) => (
-    <Episode key={index} index={index} />
+  const episodePropsArray = Array.from({ length: 7 }).map(() => ({
+    isInModal: false,
+    isInVideoDetail: true,
+  }));
+  const renderedEpisodes = episodePropsArray.map((episodeProps, index) => (
+    <Episode key={index} episodeProps={episodeProps} />
   ));
 
   return (
@@ -204,3 +194,22 @@ const Video = () => {
 };
 
 export default Video;
+
+// const playerVars = {
+//   playlist: [
+//     'https://rr2---sn-npoeene6.c.drive.google.com/videoplayback?expire=1694161708&ei=_LD6ZLSVDNCTrvIP_Ny3uA0&ip=2405:4802:9017:c3c0:e80d:3489:6172:dc94&cp=QVROVkJfUFdOSVhPOnNPUEg0bXlUaTltXzZBVjdCV1A0M0xQMTF6QkhsWEozUDlQMmdEMlc0Z1c&id=a3029fd027e67d2a&itag=37&source=webdrive&requiressl=yes&mh=7e&mm=32&mn=sn-npoeene6&ms=su&mv=m&mvi=2&pl=44&ttl=transient&susc=dr&driveid=1qNeTdt2Aj-PdXVvM1rNKmOjC7PKWG0lZ&app=explorer&mime=video/mp4&vprv=1&prv=1&dur=209.142&lmt=1694037750178981&mt=1694150447&subapp=DRIVE_WEB_FILE_VIEWER&txp=0001224&sparams=expire%2Cei%2Cip%2Ccp%2Cid%2Citag%2Csource%2Crequiressl%2Cttl%2Csusc%2Cdriveid%2Capp%2Cmime%2Cvprv%2Cprv%2Cdur%2Clmt&sig=AOq0QJ8wRgIhAOra69-7QBkPKxscNQ6QBLpUGWzOQeK-3mVCl_zTuLleAiEA-w05kYoTwnm_-DejbyJqjHY0G-FW90jvg8Brd2PvIEg=&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl&lsig=AG3C_xAwRQIgXqlDHM2rOCQwNo7B5MRjNBS-Xu5YBvAzwZ6A829h8NQCIQClrC7kAgYAMKUimxvwho_2c9fdsfTtRPGZDnZ7nXtKaA==',
+//     'https://rr2---sn-npoeene6.c.drive.google.com/videoplayback?expire=1694161708&ei=_LD6ZLSVDNCTrvIP_Ny3uA0&ip=2405:4802:9017:c3c0:e80d:3489:6172:dc94&cp=QVROVkJfUFdOSVhPOnNPUEg0bXlUaTltXzZBVjdCV1A0M0xQMTF6QkhsWEozUDlQMmdEMlc0Z1c&id=a3029fd027e67d2a&itag=37&source=webdrive&requiressl=yes&mh=7e&mm=32&mn=sn-npoeene6&ms=su&mv=m&mvi=2&pl=44&ttl=transient&susc=dr&driveid=1qNeTdt2Aj-PdXVvM1rNKmOjC7PKWG0lZ&app=explorer&mime=video/mp4&vprv=1&prv=1&dur=209.142&lmt=1694037750178981&mt=1694150447&subapp=DRIVE_WEB_FILE_VIEWER&txp=0001224&sparams=expire%2Cei%2Cip%2Ccp%2Cid%2Citag%2Csource%2Crequiressl%2Cttl%2Csusc%2Cdriveid%2Capp%2Cmime%2Cvprv%2Cprv%2Cdur%2Clmt&sig=AOq0QJ8wRgIhAOra69-7QBkPKxscNQ6QBLpUGWzOQeK-3mVCl_zTuLleAiEA-w05kYoTwnm_-DejbyJqjHY0G-FW90jvg8Brd2PvIEg=&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl&lsig=AG3C_xAwRQIgXqlDHM2rOCQwNo7B5MRjNBS-Xu5YBvAzwZ6A829h8NQCIQClrC7kAgYAMKUimxvwho_2c9fdsfTtRPGZDnZ7nXtKaA==',
+//   ] as string[],
+// };
+
+// const url =
+//   'https://drive.google.com/u/0/get_video_info?docid=1RSw_z1nETTgQ6i-Jr588Uz5kgH-RO-48&drive_originator_app=303';
+
+// const linkhref = async () => {
+//   const proxyUrl =
+//     'http://localhost:8000/get_video_info?docid=1RSw_z1nETTgQ6i-Jr588Uz5kgH-RO-48&drive_originator_app=303';
+
+//   const response = await fetch(proxyUrl);
+
+//   console.log(response.text());
+// };
