@@ -185,11 +185,11 @@ const Video = () => {
         <Pagination total={10} initialPage={1} />
       </div>
       <div className='hidden md:block w-[27%]'>
-        <div className='ml-7 row-span-1 col-span-1'>
+        <div className=' flex-col ml-[5%]'>
           <TabComponent></TabComponent>
-          <h3 className='ml-2 mt-3 text-2xl'>Tập 1-10</h3>
+          <h3 className='text-2xl'>Tập 1-10</h3>
         </div>
-        <div className='row-span-2 col-span-1'>{renderedEpisodes}</div>
+        <div className=''>{renderedEpisodes}</div>
       </div>
     </div>
   );
