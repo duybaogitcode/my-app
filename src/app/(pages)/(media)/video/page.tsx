@@ -105,7 +105,8 @@ const Video = () => {
             progressInterval={10}
             onProgress={handleProgress}
             onDuration={(d) => setDuration(d)}
-            onMouseDown={() => console.log('video')}
+            onPause={() => setPlaying(false)}
+            onPlay={() => setPlaying(true)}
           />
           <section className='flex items-center absolute top-[95%] w-[100%]'>
             <div onClick={() => setPlaying(!playing)}>
@@ -114,6 +115,14 @@ const Video = () => {
 
             {/* <span>Thời lượng: {duration} giây</span> */}
             <Progress value={progress} size='sm' className='max-w-[90%] mx-auto' color='danger' />
+            {/* <input
+              type='range'
+              min={0}
+              max={1}
+              step={0.01}
+              value={progress}
+              onChange={handleSeek}
+            /> */}
 
             <div>
               {isFullScreen ? (
