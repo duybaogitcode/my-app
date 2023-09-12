@@ -8,7 +8,7 @@ export default function TabComponent() {
         <Tab key='seasons' title='Phần phim'></Tab>
         <Tab key='sameCategory' title='Tương tự'></Tab>
         <Tab key='Top' title='Top phim tuần'></Tab>
-        <Tab key='List' title='Danh sách'></Tab>
+        {/* <Tab key='List' title='Danh sách'></Tab> */}
       </Tabs>
     </div>
   );

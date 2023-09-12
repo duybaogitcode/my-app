@@ -2,7 +2,7 @@ import { User } from '@nextui-org/react';
 
 export default function CommentComponent({ index }: { index: number }) {
   return (
-    <div>
+    <div className='space-y-2 mt-4 sm:mt-10'>
       {' '}
       <User
         name='User'

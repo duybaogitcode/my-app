@@ -95,9 +95,9 @@ const Video = () => {
   ));
 
   return (
-    <div className='py-[5%] grid grid-row-3 grid-flow-col gap-4 ml-[3%]'>
-      <div className=' row-span-3 space-y-5'>
-        <FullScreen handle={handleFullScreen} className='h-[730px] w-[1279px] relative'>
+    <div className='py-[5%] mt-[11%] sm:max-md:mt-16 md:max-xl:mt-10 xl:mt-0 flex justify-center w-[95%]'>
+      <div className='w-[68%]'>
+        <FullScreen handle={handleFullScreen} className='relative aspect-video'>
           <ReactPlayer
             url={
               'https://www.dailymotion.com/embed/video/x8nxyq0?autoplay=1%22%20width=%22100%%22%20height=%22100%%22%20allowfullscreen%20title=%22Dailymotion%20Video%20Player%22%20allow=%22autoplay'
@@ -130,7 +130,9 @@ const Video = () => {
           </section>
         </FullScreen>
         <section className='space-y-5'>
-          <h1 className='text-3xl'>Lorem ipsum dolor sit amet, consectetur adipisci elit</h1>
+          <h1 className='text:xl mt-5 md:text-3xl md:mt-0'>
+            Lorem ipsum dolor sit amet, consectetur adipisci elit
+          </h1>
           <div className='flex items-center space-x-4'>
             <User
               name='Nhóm dịch'
@@ -182,11 +184,13 @@ const Video = () => {
         {cmtRenders}
         <Pagination total={10} initialPage={1} />
       </div>
-      <div className='ml-7 col-span-2'>
-        <TabComponent></TabComponent>
-        <h3 className='ml-2 mt-3 text-2xl'>Tập 1-10</h3>
+      <div className='hidden md:block w-[27%]'>
+        <div className='ml-7 row-span-1 col-span-1'>
+          <TabComponent></TabComponent>
+          <h3 className='ml-2 mt-3 text-2xl'>Tập 1-10</h3>
+        </div>
+        <div className='row-span-2 col-span-1'>{renderedEpisodes}</div>
       </div>
-      <div className='row-span-2 col-span-2'>{renderedEpisodes}</div>
     </div>
   );
 };
