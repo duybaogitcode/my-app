@@ -51,7 +51,7 @@ interface Link {
 const Video = () => {
   const [playing, setPlaying] = useState(false);
 
-  const [isFullScreen, setIsFullScreen] = useState(false);
+  const [isFullScreen, setIsFullScreen] = useState(true);
 
   const [progress, setProgress] = useState(0);
 
@@ -64,15 +64,6 @@ const Video = () => {
   const cmtRenders = cmtItems.map((item, index: number) => (
     <CommentComponent key={index} index={index} />
   ));
-
-  const handleFullScreenToggle = () => {
-    if (isFullScreen) {
-      handleFullScreen.exit();
-    } else {
-      handleFullScreen.enter();
-    }
-    setIsFullScreen(!isFullScreen);
-  };
 
   const linkhref = async () => {
     const proxyUrl =
@@ -97,7 +88,11 @@ const Video = () => {
   return (
     <div className='py-[5%] md:justify-between mt-[11%] sm:max-md:mt-16 md:max-xl:mt-10 xl:mt-0 flex md:ml-[2.5%] w-[95%] justify-center'>
       <div className='w-[68%]'>
-        <FullScreen handle={handleFullScreen} className='relative aspect-video'>
+        <FullScreen
+          handle={handleFullScreen}
+          className='relative aspect-video'
+          onChange={() => setIsFullScreen(!isFullScreen)}
+        >
           <ReactPlayer
             url={
               'https://www.dailymotion.com/embed/video/x8nxyq0?autoplay=1%22%20width=%22100%%22%20height=%22100%%22%20allowfullscreen%20title=%22Dailymotion%20Video%20Player%22%20allow=%22autoplay'
@@ -120,11 +115,15 @@ const Video = () => {
             {/* <span>Thời lượng: {duration} giây</span> */}
             <Progress value={progress} size='sm' className='max-w-[90%] mx-auto' color='danger' />
 
-            <div onClick={handleFullScreenToggle}>
+            <div>
               {isFullScreen ? (
-                <FullscreenExitIcon></FullscreenExitIcon>
+                <div onClick={handleFullScreen.exit}>
+                  <FullscreenExitIcon></FullscreenExitIcon>
+                </div>
               ) : (
-                <FullscreenIcon></FullscreenIcon>
+                <div onClick={handleFullScreen.enter}>
+                  <FullscreenIcon></FullscreenIcon>
+                </div>
               )}
             </div>
           </section>
