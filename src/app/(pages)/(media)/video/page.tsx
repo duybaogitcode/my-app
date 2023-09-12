@@ -95,7 +95,7 @@ const Video = () => {
   ));
 
   return (
-    <div className='py-[5%] mt-[11%] sm:max-md:mt-16 md:max-xl:mt-10 xl:mt-0 flex justify-center w-[95%]'>
+    <div className='py-[5%] md:justify-between mt-[11%] sm:max-md:mt-16 md:max-xl:mt-10 xl:mt-0 flex md:ml-[2.5%] w-[95%] justify-center'>
       <div className='w-[68%]'>
         <FullScreen handle={handleFullScreen} className='relative aspect-video'>
           <ReactPlayer
@@ -133,7 +133,7 @@ const Video = () => {
           <h1 className='text:xl mt-5 md:text-3xl md:mt-0'>
             Lorem ipsum dolor sit amet, consectetur adipisci elit
           </h1>
-          <div className='flex items-center space-x-4'>
+          <div className='flex items-center space-x-4 flex-col sm:flex-row'>
             <User
               name='Nhóm dịch'
               description={<Link href='#'>@Nhóm dịch</Link>}
