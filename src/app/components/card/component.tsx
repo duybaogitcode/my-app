@@ -59,7 +59,7 @@ const CardComponent = ({ item }: { item: Item }) => {
     >
       <Image
         alt='Woman listing to music'
-        src='https://firebasestorage.googleapis.com/v0/b/ecomm-1a83f.appspot.com/o/Test%2Fthumb-1920-974218.jpg?alt=media&token=985a8310-7ef6-438f-934c-6145170ae5b7'
+        src='https://firebasestorage.googleapis.com/v0/b/ecomm-1a83f.appspot.com/o/Test%2Fthumb-1920-699287.jpg?alt=media&token=f92679cc-9396-4260-8e92-529bf1bcc26d'
         className='object-cover aspect-video'
       />
       {isHovered && (
