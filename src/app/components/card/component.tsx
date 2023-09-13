@@ -59,8 +59,8 @@ const CardComponent = ({ item }: { item: Item }) => {
     >
       <Image
         alt='Woman listing to music'
-        src='https://images3.alphacoders.com/132/1322308.jpeg'
-        className='object-cover'
+        src='https://firebasestorage.googleapis.com/v0/b/ecomm-1a83f.appspot.com/o/Test%2Fthumb-1920-974218.jpg?alt=media&token=985a8310-7ef6-438f-934c-6145170ae5b7'
+        className='object-cover aspect-video'
       />
       {isHovered && (
         <CardFooter className='flex-col before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10'>

@@ -1,7 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['wallpaperaccess.com', 'drive.google.com', 'images3.alphacoders.com'],
+    domains: [
+      'wallpaperaccess.com',
+      'drive.google.com',
+      'images3.alphacoders.com',
+      'firebasestorage.googleapis.com',
+    ],
   },
 };
 

@@ -19,8 +19,8 @@ export default function Episode({ episodeProps }: { episodeProps: episodeFormat 
             <div className='flex row-span-3 items-center'>
               <Image
                 alt='Woman listing to music'
-                src='https://images3.alphacoders.com/132/1322308.jpeg'
-                className='object-cover'
+                src='https://firebasestorage.googleapis.com/v0/b/ecomm-1a83f.appspot.com/o/Test%2F111029916_p0.png?alt=media&token=f8026f30-5d99-4787-a7e2-dd7a050e3fea'
+                className='object-cover aspect-video'
               />
             </div>
 

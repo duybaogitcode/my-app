@@ -23,7 +23,7 @@ const HomeMain = () => {
         <div className='h-full'>
           {/* Hình ảnh */}
           <Image
-            src='https://images3.alphacoders.com/132/1322308.jpeg'
+            src='https://firebasestorage.googleapis.com/v0/b/ecomm-1a83f.appspot.com/o/Test%2F101455512_p0.jpg?alt=media&token=b41ce502-8d23-4a52-b1ab-763d57bda178'
             layout='fill'
             objectFit='cover'
             alt='background'

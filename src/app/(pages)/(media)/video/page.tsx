@@ -39,6 +39,14 @@ export interface OnProgressProps {
 
 const defaultContent =
   '« Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. »';
+
+const playerVars = {
+  playlist: [
+    'https://www.dailymotion.com/embed/video/x8o1lob?autoplay=1" width="100%" height="100%" allowfullscreen title="Dailymotion Video Player" allow="autoplay',
+    'https://www.dailymotion.com/embed/video/x8nxyq0?autoplay=1%22%20width=%22100%%22%20height=%22100%%22%20allowfullscreen%20title=%22Dailymotion%20Video%20Player%22%20allow=%22autoplay',
+  ] as string[],
+};
+
 interface Link {
   formatId: number;
   link: string;
@@ -84,9 +92,7 @@ const Video = () => {
           onChange={() => setIsFullScreen(!isFullScreen)}
         >
           <ReactPlayer
-            url={
-              'https://www.dailymotion.com/embed/video/x8nxyq0?autoplay=1%22%20width=%22100%%22%20height=%22100%%22%20allowfullscreen%20title=%22Dailymotion%20Video%20Player%22%20allow=%22autoplay'
-            }
+            url={playerVars.playlist[0]}
             // width={isFullScreen ? '100%' : '1279px'}
             // height={isFullScreen ? '100%' : '730px'}
             width={'100%'}
@@ -194,13 +200,6 @@ const Video = () => {
 };
 
 export default Video;
-
-// const playerVars = {
-//   playlist: [
-//     'https://rr2---sn-npoeene6.c.drive.google.com/videoplayback?expire=1694161708&ei=_LD6ZLSVDNCTrvIP_Ny3uA0&ip=2405:4802:9017:c3c0:e80d:3489:6172:dc94&cp=QVROVkJfUFdOSVhPOnNPUEg0bXlUaTltXzZBVjdCV1A0M0xQMTF6QkhsWEozUDlQMmdEMlc0Z1c&id=a3029fd027e67d2a&itag=37&source=webdrive&requiressl=yes&mh=7e&mm=32&mn=sn-npoeene6&ms=su&mv=m&mvi=2&pl=44&ttl=transient&susc=dr&driveid=1qNeTdt2Aj-PdXVvM1rNKmOjC7PKWG0lZ&app=explorer&mime=video/mp4&vprv=1&prv=1&dur=209.142&lmt=1694037750178981&mt=1694150447&subapp=DRIVE_WEB_FILE_VIEWER&txp=0001224&sparams=expire%2Cei%2Cip%2Ccp%2Cid%2Citag%2Csource%2Crequiressl%2Cttl%2Csusc%2Cdriveid%2Capp%2Cmime%2Cvprv%2Cprv%2Cdur%2Clmt&sig=AOq0QJ8wRgIhAOra69-7QBkPKxscNQ6QBLpUGWzOQeK-3mVCl_zTuLleAiEA-w05kYoTwnm_-DejbyJqjHY0G-FW90jvg8Brd2PvIEg=&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl&lsig=AG3C_xAwRQIgXqlDHM2rOCQwNo7B5MRjNBS-Xu5YBvAzwZ6A829h8NQCIQClrC7kAgYAMKUimxvwho_2c9fdsfTtRPGZDnZ7nXtKaA==',
-//     'https://rr2---sn-npoeene6.c.drive.google.com/videoplayback?expire=1694161708&ei=_LD6ZLSVDNCTrvIP_Ny3uA0&ip=2405:4802:9017:c3c0:e80d:3489:6172:dc94&cp=QVROVkJfUFdOSVhPOnNPUEg0bXlUaTltXzZBVjdCV1A0M0xQMTF6QkhsWEozUDlQMmdEMlc0Z1c&id=a3029fd027e67d2a&itag=37&source=webdrive&requiressl=yes&mh=7e&mm=32&mn=sn-npoeene6&ms=su&mv=m&mvi=2&pl=44&ttl=transient&susc=dr&driveid=1qNeTdt2Aj-PdXVvM1rNKmOjC7PKWG0lZ&app=explorer&mime=video/mp4&vprv=1&prv=1&dur=209.142&lmt=1694037750178981&mt=1694150447&subapp=DRIVE_WEB_FILE_VIEWER&txp=0001224&sparams=expire%2Cei%2Cip%2Ccp%2Cid%2Citag%2Csource%2Crequiressl%2Cttl%2Csusc%2Cdriveid%2Capp%2Cmime%2Cvprv%2Cprv%2Cdur%2Clmt&sig=AOq0QJ8wRgIhAOra69-7QBkPKxscNQ6QBLpUGWzOQeK-3mVCl_zTuLleAiEA-w05kYoTwnm_-DejbyJqjHY0G-FW90jvg8Brd2PvIEg=&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl&lsig=AG3C_xAwRQIgXqlDHM2rOCQwNo7B5MRjNBS-Xu5YBvAzwZ6A829h8NQCIQClrC7kAgYAMKUimxvwho_2c9fdsfTtRPGZDnZ7nXtKaA==',
-//   ] as string[],
-// };
 
 // const url =
 //   'https://drive.google.com/u/0/get_video_info?docid=1RSw_z1nETTgQ6i-Jr588Uz5kgH-RO-48&drive_originator_app=303';
