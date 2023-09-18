@@ -1,23 +1,15 @@
 'use client';
-import { Avatar, Button, Pagination, Progress, Textarea, User } from '@nextui-org/react';
+import { Avatar, Button, Textarea, User } from '@nextui-org/react';
 import dynamic from 'next/dynamic';
-import { useState, useRef, useEffect } from 'react';
-import { FullScreen, useFullScreenHandle } from 'react-full-screen';
-import axios from 'axios';
-import { Envs } from '../../../ultis/envs';
-import Episode from '@/app/components/episode/component';
-import TabComponent from '@/app/components/tabs/component';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import PauseIcon from '@mui/icons-material/Pause';
-import FullscreenIcon from '@mui/icons-material/Fullscreen';
-import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
 import { Accordion, AccordionItem } from '@nextui-org/react';
-import Box from '@mui/material/Box';
-import Rating from '@mui/material/Rating';
-import Typography from '@mui/material/Typography';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay';
+import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 
 import Link from 'next/link';
-import CommentComponent from '@/app/components/comment/component';
+import TabContent from '@/app/components/tabContent';
+import Comment from '@/app/components/comment';
 
 const ReactPlayer = dynamic(() => import('react-player'), {
   ssr: false,
@@ -42,7 +34,7 @@ const defaultContent =
 
 const playerVars = {
   playlist: [
-    'https://www.dailymotion.com/embed/video/x8o1lob?autoplay=1" width="100%" height="100%" allowfullscreen title="Dailymotion Video Player" allow="autoplay',
+    'https://firebasestorage.googleapis.com/v0/b/ecomm-1a83f.appspot.com/o/video%2FMusic2.mp4?alt=media&token=62ff5252-460e-4189-b35d-99628647251b',
     'https://www.dailymotion.com/embed/video/x8nxyq0?autoplay=1%22%20width=%22100%%22%20height=%22100%%22%20allowfullscreen%20title=%22Dailymotion%20Video%20Player%22%20allow=%22autoplay',
   ] as string[],
 };
@@ -53,147 +45,94 @@ interface Link {
 }
 
 const Video = () => {
-  const [playing, setPlaying] = useState(false);
+  const items = Array.from({ length: 10 });
 
-  const [isFullScreen, setIsFullScreen] = useState(true);
-
-  const [progress, setProgress] = useState(0);
-
-  const handleFullScreen = useFullScreenHandle();
-  const [duration, setDuration] = useState(0);
-
-  const [value, setValue] = useState<number | null>(4.5);
-
-  const cmtItems = Array.from({ length: 4 });
-  const cmtRenders = cmtItems.map((item, index: number) => (
-    <CommentComponent key={index} index={index} />
-  ));
-
-  const handleProgress = (state: OnProgressProps) => {
-    const currentTime = state.playedSeconds;
-    const percentage = (currentTime / duration) * 100;
-    setProgress(percentage);
-  };
-
-  const episodePropsArray = Array.from({ length: 7 }).map(() => ({
-    isInModal: false,
-    isInVideoDetail: true,
-  }));
-  const renderedEpisodes = episodePropsArray.map((episodeProps, index) => (
-    <Episode key={index} episodeProps={episodeProps} />
+  const renderComments = items.map((item, index: number) => (
+    <Comment key={index} index={index}></Comment>
   ));
 
   return (
     <div className='py-[5%] md:justify-between mt-[11%] sm:max-md:mt-16 md:max-xl:mt-10 xl:mt-0 flex md:ml-[2.5%] w-[95%] justify-center'>
-      <div className='w-[68%]'>
-        <FullScreen
-          handle={handleFullScreen}
-          className='relative aspect-video'
-          onChange={() => setIsFullScreen(!isFullScreen)}
-        >
+      <div className='w-[90%] sm:w-[68%]'>
+        <div className='aspect-video'>
           <ReactPlayer
             url={playerVars.playlist[0]}
-            // width={isFullScreen ? '100%' : '1279px'}
-            // height={isFullScreen ? '100%' : '730px'}
             width={'100%'}
             height={'100%'}
-            playing={playing}
-            progressInterval={10}
-            onProgress={handleProgress}
-            onDuration={(d) => setDuration(d)}
-            onPause={() => setPlaying(false)}
-            onPlay={() => setPlaying(true)}
+            controls={true}
           />
-          <section className='flex items-center absolute top-[95%] w-[100%]'>
-            <div onClick={() => setPlaying(!playing)}>
-              {playing ? <PauseIcon></PauseIcon> : <PlayArrowIcon></PlayArrowIcon>}
-            </div>
+        </div>
 
-            {/* <span>Thời lượng: {duration} giây</span> */}
-            <Progress value={progress} size='sm' className='max-w-[90%] mx-auto' color='danger' />
-            {/* <input
-              type='range'
-              min={0}
-              max={1}
-              step={0.01}
-              value={progress}
-              onChange={handleSeek}
-            /> */}
-
-            <div>
-              {isFullScreen ? (
-                <div onClick={handleFullScreen.exit}>
-                  <FullscreenExitIcon></FullscreenExitIcon>
-                </div>
-              ) : (
-                <div onClick={handleFullScreen.enter}>
-                  <FullscreenIcon></FullscreenIcon>
-                </div>
-              )}
-            </div>
-          </section>
-        </FullScreen>
         <section className='space-y-5'>
-          <h1 className='text:xl mt-5 md:text-3xl md:mt-0'>
+          <h1 className='mt-5 text:xl md:text-3xl md:mt-0'>
             Lorem ipsum dolor sit amet, consectetur adipisci elit
           </h1>
-          <div className='flex items-center space-x-4 flex-col sm:flex-row'>
+          <div className='flex justify-between'>
             <User
               name='Nhóm dịch'
-              description={<Link href='#'>@Nhóm dịch</Link>}
+              description={<Link href={'/'}>@Nhóm dịch</Link>}
+              avatarProps={{
+                src: 'https://i.pinimg.com/1200x/32/6f/7c/326f7cd6429cf76c88bd4d61c20ac716.jpg',
+              }}
+            />
+            <div className='space-x-5'>
+              <ThumbUpAltIcon />
+              <ThumbDownIcon />
+              <PlaylistPlayIcon />
+              <ArrowCircleDownIcon />
+            </div>
+          </div>
+          <section className='rounded-lg bg-zinc-900'>
+            <h1 className='pt-3 ml-3'>Lượt xem: number, Ngày đăng: year, Thể loại: Category</h1>
+            <article>
+              {' '}
+              <Accordion variant='light'>
+                <AccordionItem
+                  key='1'
+                  aria-label='description'
+                  subtitle='Mô tả'
+                  id='accordion_item'
+                >
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia ab unde amet
+                    neque! Voluptatibus, enim distinctio vitae a sit in facere earum. Tenetur
+                    mollitia vero accusamus quod inventore molestiae possimus!
+                  </p>
+                </AccordionItem>
+              </Accordion>
+            </article>
+          </section>
+
+          <h2>Bình luận - $number</h2>
+
+          <div className='pb-5'>
+            <User
+              name='You'
+              description={<Link href={'/'}>@Your name</Link>}
               avatarProps={{
                 src: 'https://i.pinimg.com/1200x/32/6f/7c/326f7cd6429cf76c88bd4d61c20ac716.jpg',
               }}
             />
 
-            <Rating name='read-only' value={value} readOnly />
+            <form className='w-full space-y-1'>
+              <Textarea
+                variant='faded'
+                // label='Description'
+                labelPlacement='outside'
+                placeholder='Nhập bình luận'
+                // description='Enter a concise description of your project.'
+                className='w-full dark'
+              />
+              <Button color='primary' className='float-right pd-5'>
+                Gửi
+              </Button>
+            </form>
           </div>
-          <section className='bg-zinc-900 rounded-lg space-y-3'>
-            <h1 className='ml-2'>Lượt xem: number Ngày đăng: year Thể loại: Category</h1>
-            <article>
-              {' '}
-              <Accordion variant='light'>
-                <AccordionItem key='1' aria-label='description' subtitle='Ấn để xem' title='Mô tả'>
-                  {defaultContent}
-                </AccordionItem>
-              </Accordion>
-            </article>
-          </section>
+          {renderComments}
         </section>
-
-        <div className='space-y-5'>
-          <Box
-            sx={{
-              '& > legend': { mt: 2 },
-            }}
-          >
-            <Typography component='legend'>Đánh giá | Chấm điểm</Typography>
-            <Rating
-              name='simple-controlled'
-              value={value}
-              // onChange={(event, newValue) => {
-              //   setValue(newValue);
-              // }}
-              className='bg-zinc-800'
-            />
-          </Box>
-          <Textarea
-            label='Bình luận'
-            labelPlacement='outside'
-            placeholder='Nhập bình luận của bạn...'
-            className='w-full'
-          />
-        </div>
-
-        {cmtRenders}
-        <Pagination total={10} initialPage={1} />
       </div>
-      <div className='hidden md:block w-[27%]'>
-        <div className=' flex-col ml-[5%]'>
-          <TabComponent></TabComponent>
-          <h3 className='text-2xl'>Tập 1-10</h3>
-        </div>
-        <div className=''>{renderedEpisodes}</div>
+      <div className='w-[26%] bg-black flex-col space-y-5 items-center hidden sm:block'>
+        <TabContent></TabContent>
       </div>
     </div>
   );

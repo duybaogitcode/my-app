@@ -1,6 +1,6 @@
 'use client';
 
-import SearchInput from '@/app/components/searchInput/component';
+import SearchInput from '@/app/components/searchInput';
 import {
   Navbar,
   NavbarBrand,

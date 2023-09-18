@@ -1,6 +1,6 @@
 import { User } from '@nextui-org/react';
 
-export default function CommentComponent({ index }: { index: number }) {
+export default function Comment({ index }: { index: number }) {
   return (
     <div className='space-y-2 mt-4 sm:mt-10'>
       {' '}
